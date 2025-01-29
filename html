@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airfryer Token - The Hottest Meme Coin!</title>
+    <link rel="icon" type="image/svg+xml" href="airfryer-icon.svg">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #FFD460;
+            --accent: #4ECDC4;
+            --background: #F7FFF7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        .nav {
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            background: rgba(247, 255, 247, 0.95);
+            z-index: 100;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleFloat 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .hero-title:hover {
+            transform: scale(1.05);
+        }
+
+        .airfryer-animation {
+            width: 150px;
+            height: 150px;
+            animation: spin 8s linear infinite;
+            margin: 2rem;
+        }
+
+        .token-info {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contract-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .contract-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .airfryer-animation {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <img src="airfryer-logo.svg" alt="Airfryer Logo" width="120">
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">AIRFRYER TOKEN</h1>
+        <div class="airfryer-animation">🛸</div>
+        <p class="tagline">The Hottest Token Straight Out of the Fryer!</p>
+        <div class="cta-container">
+            <a href="#buy" class="cta-button">BUY NOW</a>
+            <a href="#track" class="cta-button">TRACK PRICE</a>
+        </div>
+    </section>
+
+    <section class="token-info">
+        <div class="contract-box" onclick="copyContract()">
+            <h3>Contract Address</h3>
+            <p id="contract">0xAF...1234</p>
+            <span class="copied-message">Click to copy!</span>
+        </div>
+
+        <div class="exchange-links">
+            <h2>Track On:</h2>
+            <a href="#" class="exchange-button">DexScreener</a>
+            <a href="#" class="exchange-button">Pump Fund</a>
+        </div>
+    </section>
+
+    <script>
+        function copyContract() {
+            const contract = document.getElementById('contract');
+            navigator.clipboard.writeText(contract.innerText);
+            alert('Contract address copied!');
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add floating particles animation
+        function createFloatingToken() {
+            const token = document.createElement('div');
+            token.style.position = 'fixed';
+            token.style.left = Math.random() * 100 + 'vw';
+            token.style.animation = `float ${Math.random() * 3 + 2}s infinite`;
+            token.innerText = '🍟';
+            document.body.appendChild(token);
+            
+            setTimeout(() => {
+                token.remove();
+            }, 5000);
+        }
+
+        setInterval(createFloatingToken, 300);
+    </script>
+</body>
+</html>
